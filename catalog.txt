@@ -1,0 +1,79 @@
+catalog
+
+it basically represents the list of items which includes categories and products
+in hybris also we have catalog
+
+to represent catalog in hybris we have catalogmodel.java in order to represent catalog
+
+catalog is divided into 
+1.product catalog
+2.content catalog
+
+product catalog deals with products that we see in the website
+and content catalog deals with how content getting displayed in the website
+
+for catalog we have catalogmodel.java
+insert_update catalog;id[unique=true];name
+			;apparel-uk;apparel uk;
+
+
+we dont have a seperate itemtype for product catalog
+the catalogmodel.java always talks about product catalog only
+
+but we have contentcatalog.java for content catalog which extends catalogmodel
+it represents content catalog 
+
+in order to insert a query we need to say insert update catalog for product catalog
+whereas in content catalog we need to say insert update contentcatalog because content catalog extends catalog ehich is parent and child relationship whereas the product catalog itself is catalog.
+
+catalogversion-we have seperate class catalogversion.java
+represents the catalog version. ->combination of catalog + version.
+
+insert_upadte catalogverison;catalog(id) [catalog version will have reference to catalog ] ;version							apparel-uk;staged;
+						apparel-uk;online;
+
+version is nothing but string.
+
+ staged- initially creating products categories,assigning somebody to verify then afterthat they move to online
+online-in online version whatever we have we show it in storefront.
+
+so if we have x in stage but not in online that category will not appear in storefront.
+anything that has comes to website that must come to online..
+
+
+getroot categories in catalog model.
+this is a one to many
+which is list<categorymodel> model..
+
+category model - represent category.
+
+for impex -> insertupdate category;code[unique=true];name;subcategory(code);
+			electronics;electronics;mobile;
+			furniture;furniture;tv;
+											//after sync
+insertupdate category;code[unique=true];name;supercategories(code);catalogversion
+			;mobile;mobile;electronics;
+			;tv;tv;electronics;
+
+
+category-> zero or more supercategories or 
+category -> zero or more subcategories
+root category - does not have any root category
+product - product model has the subcategories which is many to many
+
+many product contain multiplecategories
+multiplecategories contain many product (getsubcategories in product model.java)
+
+any item type which will have association with catalog version they called catalog aware item type.
+catalogmodel,categorymodel,productmodel all have catalog version 
+
+synchronization...
+it copies items staged to online.
+we dont need to use impex statements.
+if the online is empty it copies the whole staged as a copy
+if the online contains it copies the only modified in staged.
+
+
+base product-asus 8gb
+variant prodcut extends productmodel- 8gb with blue
+variant model will holds reference to baseproduct
