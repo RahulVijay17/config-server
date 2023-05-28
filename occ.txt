@@ -1,0 +1,42 @@
+occ -> to enable occ we need to have ycommercewebservice extension.
+you have to do ant extgen
+provide the name of extension
+and use ycommercewebservice as an base extension
+and automatically get an new extension for web services
+in that extension we will get the controllers and in that extension we have to modify things.
+
+ycommercewebservice-always depends on facades
+
+hybris implemented occ using oauth .we have to take the authorization and we have to take
+credentials and based on that we need to take access token then we need to use this access token
+for subsequent occ calls.
+
+
+flow occ -> presentation jsp page and controllers -> facade -> services -> dao -> db
+if u want to get the details from db then we will call the db and send the data to presentation layer.
+and if u want to save in transaction we will have a from  and then convert that into model object and save it in db.
+
+if we dont want to use jsp page or wcms component but still want to use hybris but only UI we dont want to manage in hybris.
+this kind of architecture is called headless architecture means hybris is used without UI.
+there is an option in hybris where they can choose 3rd party ui and hybris as backend.
+
+3rd party UI -> facade -> services -> dao -> db
+
+jsp and controllers -> storefront extension
+facade -> facade extension.
+service,dao -> core extension.
+
+they are interdependent extension where storefront is dependent on facade extension and facade extension is dependent on core extension
+so we can basically make a call to facade layer to controller by injecting a dependency on facade.
+to make a dependency between these 2 layer we have extensioninfo.xml we have a require extension.
+in storefront extensioninfo.xml we specify extension as facade.
+
+so when it comes to 3rd party UI how to inject the facade dependency ?
+in that case we can use occ it acts a layer b/w 3rd party Ui and hybris system.
+
+3rd party UI or android app or ios app -> OCC -> facade -> services -> dao -> db
+3rd party  will receive the response in the occ layer it always communicate with JSON
+
+eg: to get list of product or list of customer or list of order
+we have to make sure that list of orders to 3rd party
+the particular ui call our occ and send the request to us and we will save the entire orders in hybris db

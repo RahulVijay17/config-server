@@ -1,0 +1,37 @@
+lets say i want to give which is not as exactly as hybris db i want to modify the value and pass on to solr so that solr will give that response as to the app.
+for eg product has a review  but i dont want all the rating to be passed to solr. what i want is avg rating passed to solr
+so we will add a new attribute called avg.rating in solr indexed property and this property is not a direct property
+under a product model.means in product model we have review but one product we have n number of reviews
+from diff customer now i want to provide avg review from product to solr server so that whenever 
+app wants to use avg rating we can use avg rating rather than each rating of product.
+
+lets say each rating is not useful in solr response and it is going to be very useful if we pass avg rating of a product
+
+so in that case we can define the indexed  property as avg rating.
+this is not a property which is not exist in product but we will pass this attribute to solr
+by writing some mechanism.that mechanism is called value provider
+
+it takes the value from product model and convert it into somethiong and sends it to solr
+that is called value provider.
+
+value provider what we define in impex is nothing but spring bean id of java class of what we defind in value providers  
+
+indexer configuration- indexer mode -
+direct mode and two phase mode
+in direct mode it means whenever we do indexing so it will basically down the solr server indexer whatever the indexing we have before and create the new indexer there itself.
+in two phase mode it will take a copy of ur existing one and do the indexing over there and keep ur existing indexing as it is to work.
+so solr indexing search will not affected if we use two phase once it is complete it will replace itself
+
+modes
+standalone - in ur dev project we will be using embedded server or standalone server
+cloud - in prod generally use cloud mode.it will improve more scalability.
+basically we have large set of data access in the production.so in prod we cant use single solr node.
+they have multiple solr nodes configured and they use solr with cloud configuration.
+
+index types - within that we have indexed property and we can use those properties 	for getting the response from the solr.
+
+rendering the results
+are the additional attributes that we pass on solr in order to make sure the solr behaves in a particular way
+synonmys- cap,hat
+stopwords-the ,an, and  ->if we configure for those words  solr will not be hitting the db get the data 
+redirects- specify the value we type in search
