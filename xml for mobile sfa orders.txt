@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<CreateSFAOrderWsDTO>
+
+<SNDPRN>GRDCLNT300</SNDPRN>
+
+<userId>630207S002</userId>
+
+<deliveryAdd1>Neel Building</deliveryAdd1>
+
+<deliveryAdd2>M.G.Road</deliveryAdd2>
+
+<deliveryAdd3></deliveryAdd3>
+
+<mobNumber>5466867544</mobNumber>
+
+<orderOrigin>3</orderOrigin>
+
+<postalCode>411041</postalCode>
+
+<sfaRemark>OUA-MOBILE</sfaRemark>
+
+<shipTo>630207MND7</shipTo>
+
+<soldTo>630207S002</soldTo>
+
+<specInstr2>SCPI testing akshay 7</specInstr2>
+
+<poDate>30072023</poDate>
+
+<pamNumber>1234</pamNumber>
+
+<pickupDetail>
+
+    <truckNumber>KA07MW1234</truckNumber>
+
+    <driverName>Jhon Smith</driverName>
+
+    <driverMobileNumber>8791798121</driverMobileNumber>
+
+    <selfLifingOption>TRUE</selfLifingOption>
+
+</pickupDetail>
+
+<newPickupDetail>
+
+    <newTruckNumber>KW07MK1234</newTruckNumber>
+
+    <newDriverName>Jhon Smith1</newDriverName>
+
+    <newDriverMobileNumber>9791379286</newDriverMobileNumber>
+
+    <newSelfLifingOption>TRUE</newSelfLifingOption>
+
+</newPickupDetail>
+
+<newEndUseOfMaterial>
+
+<newCode>01</newCode>
+
+<newContactPerson>Smith</newContactPerson>
+
+<newMobileNumber>9876543210</newMobileNumber>
+
+</newEndUseOfMaterial>
+
+<lineItem>
+
+    <bgp>PPCUTHP0</bgp>
+
+    <quantity>1.0</quantity>
+
+    <delPeriod>02</delPeriod>
+
+    <reqDate>30072023</reqDate>
+
+</lineItem>
+
+</CreateSFAOrderWsDTO>
+
+
+
+
+
+
+
+
+
+
+
+
+CR1
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<CreateSFAOrderWsDTO>
+
+<SNDPRN>GRDCLNT300</SNDPRN>
+
+<userId>630207S002</userId>
+
+<deliveryAdd1>Neel Building</deliveryAdd1>
+
+<deliveryAdd2>M.G.Road</deliveryAdd2>
+
+<deliveryAdd3></deliveryAdd3>
+
+<mobNumber>5466867544</mobNumber>
+
+<pamNumber>21345678</pamNumber>
+
+<poDate>2023-07-18T11:17:35.518Z</poDate>
+
+<orderOrigin>3</orderOrigin>
+
+<postalCode>411041</postalCode>
+
+<sfaRemark>OUA-MOBILE</sfaRemark>
+
+<shipTo>630207MND7</shipTo>
+
+<soldTo>630207S002</soldTo>
+
+<specInstr2>SCPI testing akshay 7</specInstr2>
+
+
+<pickupDetail>
+
+    <truckNumber>KA07MW1234</truckNumber>
+
+    <driverName>Jhon Smith</driverName>
+
+    <driverMobileNumber>8791798121</driverMobileNumber>
+
+    <selfLifingOption>TRUE</selfLifingOption>
+
+</pickupDetail>
+
+<newPickupDetail>
+
+    <newTtruckNumber>KW07MK1234</newTtruckNumber>
+
+    <newDriverName>Jhon Smith1</newDriverName>
+
+    <newDriverMobileNumber>9791379286</newDriverMobileNumber>
+
+    <newSelfLifingOption>TRUE</newSelfLifingOption>
+
+</newPickupDetail>
+
+<lineItem>
+
+    <bgp>PPCUTHP0</bgp>
+
+    <quantity>1.0</quantity>
+
+    <delPeriod>02</delPeriod>
+
+    <reqDate>30072023</reqDate>
+
+</lineItem>
+
+</CreateSFAOrderWsDTO>
+
+
+

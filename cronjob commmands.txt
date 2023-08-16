@@ -1,0 +1,51 @@
+PrepareInterceptor
+ValidateInterceptor
+
+Utclb2bcustomermodelvalidatorInterceptor
+Utclb2bcustomerprepareinterceptor
+UtclClearAddressesCustomerMasterReplicationInterceptor
+
+
+ D:\Hybris\hybris\bin\custom\training\trainingcore\src\com\hybris\training\core\jalo\
+ 
+ 
+
+
+<!-- My Cart Item Type Definition -->
+<itemtype code="MyCart" extends="Cart">
+    <attributes>
+        <attribute type="java.util.Date" autocreate="true" qualifier="deliveryDate">
+            <modifiers read="true" write="true" search="true" optional="true" />
+            <persistence type="property" />
+        </attribute>
+    </attributes>
+</itemtype>
+<attribute type="java.lang.String"
+						qualifier="empDesignation">
+						<modifiers optional="false" unique="false" />
+						<persistence type="property"></persistence>
+					</attribute>
+					
+					
+					
+					
+					
+INSERT_UPDATE ServicelayerJob;code[unique= true];springId
+;customerDisableJob;customerDisableCronJob
+
+
+INSERT_UPDATE CronJob ; code[unique=true];job(code);sessionLanguage(isocode)
+;customerDisableCronJob;customerDisableJob;en
+
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true]; cronExpression
+;customerDisableCronJob; 0/30 * * * * ?
+
+bosch calls,utcl,carestream.
+
+
+INSERT_UPDATE ServicelayerJob;code[unique= true];springId
+;productsCatalogVersionOnline;productsCatalogVersionOnline
+
+INSERT_UPDATE CronJob ; code[unique=true];job(code);sessionLanguage(isocode)
+;onlineProductsCatalogVersion;productsCatalogVersionOnline;en

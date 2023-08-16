@@ -1,0 +1,129 @@
+catalog
+it basically represents the list of items which includes categories and products
+
+in hybris also we have catalog
+
+to represent catalog in hybris we have catalogmodel.java
+
+for catalog we have catalogmodel.java
+insert_update catalog;id[unique=true];name
+			;apparel-uk;apparel uk;
+
+catalog is divided into 
+1.product catalog
+2.content catalog
+
+product catalog deals with products that we see in the website
+and content catalog deals with how content getting displayed in the website
+
+we dont have a seperate itemtype for product catalog
+the catalogmodel.java always talks about product catalog only
+
+but we have contentcatalogmodel.java for content catalog which extends catalogmodel
+it represents content catalog 
+
+in order to insert a query we need to say insert_update catalog for product catalog
+whereas in content catalog we need to say insert_update contentcatalog because content catalog extends catalog which is parent and child relationship whereas the product catalog itself is catalog.
+
+catalogversion-we have seperate class catalogversionmodel.java
+represents the catalog version. ->which is combination of catalog + version.
+
+insert_update catalogverison;catalog(id) [catalog version will have reference to catalog};version ]																							;apparel-uk;staged;
+																						  ;apparel-uk;online;
+
+version is nothing but string.
+
+ staged- initially creating products, categories,assigning somebody to verify then afterthat they move to online
+online-in online version whatever we have we show it in storefront.
+
+so if we have x in stage but not in online that category will not appear in storefront.
+anything that has comes to website that must come to online..
+
+
+getroot categories in catalog model.
+this is a one to many
+which is list<categorymodel> model..
+
+category model - represent category.
+
+for impex -> insertupdate category;code[unique=true];name;subcategory(code);
+			electronics;electronics;mobile;
+			furniture;furniture;tv;
+											//after sync
+insertupdate category;code[unique=true];name;supercategories(code);catalogversion
+			;mobile;mobile;electronics;
+			;tv;tv;electronics;
+
+
+category-> zero or more supercategories or 
+category -> zero or more subcategories
+root category - does not have any root category
+product - product model has the subcategories which is collection many to many
+
+many product contain multiplecategories
+multiplecategories contain many product (getsupercategories in product model.java)
+
+any item type which will have association with catalog version they called catalog aware item type.
+catalogmodel,categorymodel,productmodel all have catalog version 
+
+synchronization...
+it copies items staged to online.
+we dont need to use impex statements.
+if the online is empty it copies the whole staged as a copy
+if the online contains it copies the only modified in staged.
+
+
+base product-asus 8gb
+variant prodcut extends productmodel- 8gb with blue
+variant model will holds reference to baseproduct
+
+diff b/w catalog and catalog version -> one to many
+one catalog can have staged version and online version
+
+category and product -> many to many
+same category can have list of products
+and same product can have list of category.
+
+product->base product->generally which is not sellable
+product->variant->which is sellable which is in sku-stock keeping unit
+
+so product will have whenever we should be able to identify wheater it is a base product or varient
+just by looking at product in backoffice.
+
+if it is a product we can see set of variants
+varient which has a reference of product
+
+product has to be approved state to view it in storefront.
+if not approved or checked then this product is not eligible in storefront..it will show product not found
+
+product has onlinedate and offlinedate
+onlinedate and offlinedate-> it will show the product within the time.
+if the dates are blank it will show the product always
+
+product has  a list<mediacontainers> -> which is a list of pics of products
+
+product will have price..
+the price representation in hybris which is priceRow..
+priceRow is a itemtype which is also have pricerowmodel.
+
+
+one product model has a listofpricerow.
+geteurope1price which has collection of priceRow.
+
+site store stock of product
+
+site -> will have content catalog.
+so basic thing is the your site is represented by using cmssitemodel so any number of sites that you are going to create in ur project is created using cmssitemodel instance using insert_update cmssite;code[unique=true];name;active;
+us;
+uk;
+we can create as many instance as possible 
+
+store->will have product catalog..will linked to store and then we have something called warehouses
+
+store->representation of actual physical store
+store->will have one or more warehouses.
+warehouses->have warehouses model..
+we use insert_update warehouses and assign it in specific store
+
+store will have delivery countries like to which countries these store can deliver and to those country
+which can have the billing

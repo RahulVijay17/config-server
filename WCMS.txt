@@ -1,0 +1,27 @@
+WCMS
+web content management system 
+
+hybris can be built basically if they choose hybris as a framework as a ecommerce application they can go with hybris with headless or they can go hybris with frontend also
+
+headless- hybris is used for backend and frontend is something else apart from hybris
+hybris with frontend - wcms plays the major role because all the content managed by hybris only it means all the content page,category page,components we see in the webpage login page ,cart page all these things created in hybris and managed by hybris  
+
+page template -> pageTemplateModel
+insert_update pagetemplate;
+
+page->
+content page(content page model),categorypage(category page model),product(product page model) page
+
+content slot name ->assoicated to pagetemplate
+so content slot name itself doesnt exist so whenever we see content slot name it always assoicated with the pagetemplate or page
+content slot name model - we have template related to content slot name.
+
+content slot -> is defind independently,->can hold list of components 
+content slot model 
+
+component - it has different component defind by hybris 
+we have banner component,paragraph component,caraousal component
+(bannercomponentmodel.java etc)
+there are so many component hybris has defind out of the box and we can also create our own component
+
+when we define a component we define it independently and the linkage how it happens is we link the component or assoicate the component to content slot. 

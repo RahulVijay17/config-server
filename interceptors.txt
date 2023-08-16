@@ -1,0 +1,7 @@
+5 types of interceptors
+
+init defaults - the 
+prepare
+load
+remove 
+validate

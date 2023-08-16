@@ -1,0 +1,68 @@
+impex
+it is a essential data 
+is a mandatory data for the site to be up 
+countries,currencies,products,languages,catalog
+
+macros
+headers
+value lines
+comments -just to give description of header,value lines all that
+
+macros 
+$price=100
+
+headers will also have 
+mode, 		itemtype ,qualifiers, modifiers
+it tells the operation what it has to done with the value lines
+
+
+Mode
+INSERT_UPDATE - it inserts a new record in db if record not found and if record already exists in db then impex updates it.
+INSERT - it inserts a new record in db and if the record already in db then impex throws error
+UPDATE - it will check for existing record and updates it ,if the record not found it will throw error
+REMOVE - it removes the record
+  
+attributes
+remove
+append
+replace
+deorator
+translator
+
+modifiers
+lang
+delim
+collection-delimiter
+ignorenull
+default
+unique
+map-delimiter
+
+use of cron job
+for ex we want to delete the carts which are older than 3 months in our ecommerece
+we can write a cronjob which basically to configure to run it everyday,everymonth or every week and we can delete that.
+when we want to send remainder email for thr customer based on some data we can write some cronjob which can run everyday,everymonth or every week and send email to the customer
+
+job - holds the business logic which needs to be executed at some point in time
+cronjob - holds the reference of the job(CronJobModel)
+trigger - holds the reference of the cron job and helps us to define schdule
+
+trigger and cronjob has a one to many relation
+a cronjob basically can have n number of triggers where we can configure at certain point in time 
+and this the predefined the itemtype 
+
+req:disable all customer who are not active for 1 year
+
+steps
+1.identify whether we need to create a itemtype or not
+2.based on that identification either we create itemtype if required extending cronjob model
+3.create java class which extends abstractjob performable
+and override perform();
+4.make the class as spring bean
+5.link job and cronjob
+6.link the trigger and trigger
+
+why do we need to create a itemtype when we have a cronjob model provided by hybris
+to add a additional attributes and use those additional attributes in our custom logic
+
+if the application running on clustured environment - used for load balancing

@@ -1,0 +1,38 @@
+flexi search
+
+flexible search only used to searching the data in the database.
+or getting the data from the database.
+
+for storing the data to the database in hybris we have modelservice
+using the modelservice.save method we save the data to database.
+
+item type code -> item.xml - table
+attribute - qualifier - column
+
+select * from customer - sql where customer is table
+
+select * from {customer} where customer is item type code
+any item type that we are going to refer in the flexi search will have curly brackets that is mandatory
+
+select name from customer where name is the column name and customer is the table name
+
+select {name} from {customer} where name is the qualifier name and customer is the item type code name
+
+to get the count of customers select count{*} from {customers}
+
+flexible search in hybris can do it in 2 ways
+1.it converts the flexi search query into sql query.
+2.execute the sql query.[which is nothing but the deployment table name]
+
+flexible query using join
+
+1.one to one
+select {a.building},{c.isocode} from {address as a join country as c on {a.country}={c.pk}}
+
+2.one to many
+select {u.name},{a.postalcode} from {user as u join address as a on {a.owner[qualifier name of source which we mentioned as one]}={u.pk}}
+
+3.many to many
+select {c.code},{p.code} from {category as c join product as CategoryProductRelation as cpr on {cpr.source}={c.pk} join product as p on {cpr.target}={p.pk}}
+
+you go to the db fire the query and get the data and pass it through all the layers and display it in storefront wherever it is required to display it

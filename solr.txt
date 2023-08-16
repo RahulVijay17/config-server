@@ -1,3 +1,38 @@
+so whenever this kind of searching condition is appened with our condition for a query we cannot get the result fast.
+
+so customer has to wait for a pretty long time in order to get the response.
+
+so that is why instead of writing these sql queries in this kind of scenarios hybris provided a concept called solr.
+in order to get the data quickly or fastly from solr so that we can display that in storefront without any delay.
+
+and this solr is not something which is hybris going to use it.solr has so many clients apart from hybris any web app providing the search option solr is also one of the major choice that company can chose for search mechanism.
+
+but hybris is using this independent app by using that endpoint url solr has been provided by hybris internally.you dont need to download solr seperately.
+
+but if we are developing our own java spring web application we need to download solr seperately.solr is different application that runs on different port.
+
+solr its a free source searching framework it works based on the documents rather than row wise or column wise.
+so whenever we made request to solr it will simply find the document and done it thats why it is faster.
+
+in case of hybris it is getting used to get the data fast and display it in storefront.
+it runs on the port default on 8983
+
+In normal flow we have 
+presentation -> facade => service -> dao -> db
+the db is connected to dao layer and we can write some flexi query to get the data and show it in the storefront.
+
+in case of solr the presentation layer calls the service layer it will make a solr request and it will make a call to solr server to get the response based on the request.
+it will not go to hybris db but products are available in hybris db.
+
+ hybris db to solr the data will be transferred so that mechanism is called indexing which means they are pushing the data from hybris db to solr
+ 
+full indexing -> it gets all the data respective of wheather it is modified or not. it will take the products eventhough it is not modified or not
+update indexing -> gets only modified data
+delete indexing -> deletes all the indexes
+
+solar indexted type - what is the itemtype that we are indexing
+solar indexed property- attributes within that itemtype we are indexing
+
 lets say i want to give which is not as exactly as hybris db i want to modify the value and pass on to solr so that solr will give that response as to the app.
 for eg product has a review  but i dont want all the rating to be passed to solr. what i want is avg rating passed to solr
 so we will add a new attribute called avg.rating in solr indexed property and this property is not a direct property
@@ -8,10 +43,8 @@ app wants to use avg rating we can use avg rating rather than each rating of pro
 lets say each rating is not useful in solr response and it is going to be very useful if we pass avg rating of a product
 
 so in that case we can define the indexed  property as avg rating.
-this is not a property which is not exist in product but we will pass this attribute to solr
-by writing some mechanism.that mechanism is called value provider
-
-it takes the value from product model and convert it into somethiong and sends it to solr
+this is not a property which is not exist in product but we will pass this attribute to solr by writing some mechanism 
+it takes the value from product model and convert it into something and sends it to solr
 that is called value provider.
 
 value provider what we define in impex is nothing but spring bean id of java class of what we defind in value providers  

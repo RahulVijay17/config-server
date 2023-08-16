@@ -1,0 +1,190 @@
+setantenv.bat
+
+ant all
+
+hybrisserver.bat
+
+
+
+INSERT_UPDATE LaderaOrganization;empId[unique=true];empName;empGenderList(code);empEmail[unique=true];dateOfBirth;empAge;
+				;12345;rahul;MALE;frederickraghul@gmail.com;Mar 03,1998 0:00:00 AM;23;
+				
+				decorator and translator
+				
+INSERT_UPDATE LaderaOrganization;empId[unique=true];empName;empGenders(code);empEmail[unique=true];dateOfBirth[dateformat=dd/MM/yyyy];empAge;
+				;12345;rahul;MALE;frederickraghul@gmail.com;23/11/1995;23;
+				
+INSERT_UPDATE OrderTable;orderId[unique=true];orderName;orderDetails;shippingAddress;discounts
+				;12345;mobile;poorvika;porur;
+				
+INSERT_UPDATE DiscountTable;DiscountId[unique=true];percentageOfDiscount;discountDetails;orders
+				;123456;10;hdfc bank;8796093069976 (this is orderpk)
+				
+				or
+				
+INSERT_UPDATE DiscountTable;DiscountId[unique=true];percentageOfDiscount;discountDetails;orders(orderId)
+				;1234588;10;hdfc bank;12345
+				
+SELECT * FROM {DiscountTable} WHERE {discountID} LIKE '%123456%'
+
+SELECT * FROM {DiscountTable} WHERE {discountID} between 123456 and 1234567
+
+"#% impex.setTargetFile( ""PrimeCustomer.csv"" , true );"
+insert_update PrimeCustomer; pk[unique=true]; subscriptionType ;points; description; cost;startDate;endDate;couponCode;
+"#% impex.exportItemsFlexibleSearch(""select {b.pk}, {b.subscriptionType},{b.points}, {b.description},{b.cost},{b.startDate},{b.endDate},{b.couponCode} from {PrimeCustomer as b}"");"
+
+add on,
+custom  folder name can be changed
+we need to change in path after we change the custom folder name
+why trainngcockpit is not generated and y deprecated
+
+
+why we need to follow and wat are all the orders and hybris hierarchy,
+item.xml,flexi search?
+
+select * from {Customer} where {customerId} = 170001;
+
+select {c.CustomerId} as Customer,{o.Orders} as Order join Customer on {o.Order}={Customer.pk}
+
+INSERT_UPDATE WorkerTables;employeeId[unique=true];employeeName;employeePassword;empDesignation;empDateOfBirth[dateformat=dd/MM/yyyy];empAddress
+								;124;Rahul;rahulvj17;Java;23/11/1995;Chennai;
+								
+INSERT_UPDATE Bank; bankCode[unique=true][cellDecorator = com.hybris.training.core.decorator.CodeDecorator, bankName_Index=2]; bankName; listOfBranches(branchCode); bankRegisteredDate; bankStatus(code);
+
+
+INSERT_UPDATE EmployeeTable;employeeId[unique=true];employeeName[cellDecorator=com.hybris.training.core.decorator.DiscountDetailsDecorator];empDesignation;empDateOfBirth[dateformat=dd/MM/yyyy];empAddress
+								;124;Rahul;Java;23/11/1995;Chennai;
+								
+INSERT_UPDATE EmployeeTable;employeeId[unique=true];employeeName;empDesignation;empDateOfBirth[dateformat=dd/MM/yyyy];employeePassword[translator=com.hybris.training.core.actions.translator.EmployeeObjectTranslator]
+								;124;Rahul;Java;23/11/1995;rahulvj17;
+								
+								
+final EmployeeTable employeeTable = (EmployeeTable) item;
+		final String passwordEncoded = pbkdf2PasswordEncoder.encode(employeeTable.getEmployeeId(),employeeTable.getEmployeePassword());
+		((EmployeeTable) item).setEmployeePassword(passwordEncoded);
+		return item;
+		
+
+
+
+
+
+select * from {WorkerTables}
+
+"$query=select * from {WorkerTables}"
+INSERT_UPDATE WorkerTables;pk[unique=true]; 
+employeeId[unique=true];employeeName
+"#% impex.exportItems(""$query"", Collections.EMPTY_MAP, Collections.singletonList( Item.class ), true, true, -1, -1 );"
+
+select count(*) from {itemtypecode_name}
+
+flexible search - hybris
+1.it converts flexible search to sql query
+2.execute the sql query.
+
+why flexi ?
+it totally deals with the itemtype code and attributes in hybris not like java classes and db tables
+we cannot use direct sql query in hybris we need to use flexi search and wait for hybris to convert it into direct sql query
+
+1)one to one
+
+select {a.appartment},{c.isocode} from {address as a join country as c on {a.country}={country.pk} }
+
+2) one to many 
+
+select {u.name},{a.postalcode} from {user as u join address as a on {a.owner}={u.pk} }
+
+3) many to many 
+
+select {c.code],[p.code} from { category as  c join categoryProductRelation as cpr on {cpr.source}={c.pk} join product as p on {cpr.target} = {p.pk} }
+
+impex
+
+macros
+headers
+value lines
+comments
+
+macros
+$price = 100
+
+headers
+Mode,itemtype qualifiers modifiers
+
+Mode
+INSERT_UPDATE - it inserts a new record in db if record not found and if record already exists in db then impex updates it.
+INSERT - it inserts a new record in db and if the record already in db then impex throws error
+UPDATE - it will check for existing record and updates it ,if the record not found it will throw error
+REMOVE - it removes the record
+
+itemtype: code defind in items.xml
+qualifiers:attributes defined in items.xml
+
+
+
+utcl-cement
+division
+
+organization
+
+
+ubs-7000_70_71-paint
+
+nightly process dor online data push
+
+
+INSERT B2BCustomer				;active;email					;defaultB2BUnit			   ;ApproverGroups;Approvers;PermissionGroups;Permissions;sapBusinessPartnerID;emailCCList;emailBCCList;optInOrderTrackingEmails;defaultLanguage;currentCheckoutCartId
+								;	  ;frederickraghul@gmail.com;8796096397317			   ;		       ;	    ;                ; rahul17   ;879609309395        
+								;879609309395;           ;                        ;               ;
+								
+INSERT B2BCustomer				;active;email					;defaultB2BUnit			   ;ApproverGroups;Approvers;PermissionGroups;Permissions;sapBusinessPartnerID;emailCCList;emailBCCList;optInOrderTrackingEmails;defaultLanguage;currentCheckoutCartId;uid[unique=true];name
+								;	  ;frederickraghul@gmail.com;8796096397317			   ;		       ;	    ;                ; rahul17   ;879609309395        ;879609309395;           ;                        ;               ;	;testuser3@test.com;test
+								
+INSERT B2BCustomer				;active;email					;defaultB2BUnit(uid);uid[unique=true];name
+								;true;testuser3@test.com;0000265230_0110_01_01;testuser3@test.com;test
+								
+								
+$productCatalog=apparelProductCatalog
+$productCatalogName=Apparel Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+INSERT_UPDATE ProdPromoMchinds;promotionId[unique=true]; promotionText;  online[dateformat=yyyy-MM-dd];offline[dateformat=yyyy-MM-dd];productR(code,$catalogVersion)
+                    		 ; 12345           		   ; Shirt      	; 2023-05-24                   ; 2023-05-27;29531
+							 
+							 
+							 
+solradmin
+admin123
+
+in our project how many b2b
+trader
+non trader
+stockiest
+
+we need to create administrator role group
+and administrator role
+to create a new employee in memberships in employee tables in user tab
+after creating a new employee we need to assign a password for that user
+we can create using impex also
+
+ins_up em ,name,
+		emgrp ,password
+
+INSERT_UPDATE Employee; UID[unique = true]; groups(uid)[mode = append];password
+                      ; alice@laderatechnology.com             ; backofficeadministratorrole;nimda
+
+INSERT_UPDATE BackofficeRole; UID[unique = true]           ; groups(uid)[mode = append]; locName                                 ; name                                    ; backOfficeLoginDisabled; authorities
+                            ; backofficeworkflowusergroup  ; employeegroup             ; Backoffice Workflow User Group          ; Backoffice Workflow User Group          ; FALSE                  ; backofficeworkflowuser
+                            ; backofficeworkflowadmingroup ; admingroup                ; Backoffice Workflow Administrator Group ; Backoffice Workflow Administrator Group ; FALSE                  ; backofficeworkflowadmin
+							
+									<relation code="User2CandidateR" localized="false" autocreate="true" generate="true">
+			<sourceElement type="User" cardinality="one" qualifier="userR" ></sourceElement>
+			<targetElement type="Candidate" cardinality="many" qualifier="candidateR" collectiontype="set" ></targetElement>
+		</relation>
+		
+	
+c1set tag jsp
+cout tag jsp
+springtheme tag jsp
+format tag jsp
+solar search query data

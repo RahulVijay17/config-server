@@ -1,0 +1,22 @@
+wcms component
+
+create a new component and display it in storefront.
+
+req : information msg in cart page
+information: items ordered after 7pm will be considered for next day delivery
+
+step 1 : identify the page template/page to add the component
+cart page
+
+step 2 :create a content slot name and associate it to the cart page template/page
+
+step 3 :create a content slot 
+
+step 4 : 
+create a component
+create paragraph component
+
+step 5 : link component to content slot
+
+step 6 : associate/link content slot and content slot name
+contentslotfortemplate

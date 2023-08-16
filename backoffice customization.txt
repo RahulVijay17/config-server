@@ -1,0 +1,19 @@
+backoffice customization
+
+in left navigation bar we see some of the types
+user ,catalog,system
+is called navigation node tree 
+and the subtypes is called type nodes 
+types,jobs,product,catalog,customer,employee
+
+
+navigation node tree
+system, - navigation node
+	types - item type codes
+	jobs
+catalog
+	product
+	catalog
+user
+	customer
+	employee

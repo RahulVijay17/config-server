@@ -1,0 +1,137 @@
+design architecture in hybris
+
+called solution architecture or technical architecture
+
+its not enterprise architecture..
+
+any product htat comes online must have hsn.
+specification is called classification in hybris
+
+1 product has many models
+multiple models has 1 product
+
+its managed by db administration 
+
+bdat
+business data architecture.
+
+ccv1        ccv2
+bosch       cengage
+
+business team or architect - business architecture
+sme-subject material expert
+
+user logged in carts available and we display in the cart page
+if seller logged in he is an b2bunit
+id
+name
+desc
+
+sold party - the one which sells
+b2c customer - buyeer is called build party
+shipped party-
+b2b unit- all courier services belongs to b2b unit
+
+masterdata - product,price,b2bunit(sold,shipped),unit(kilogram),b2c customer(),product classification,address,order,promotion,coupon
+1.within hybris 
+2,sap ecc or erp or any 3rd party system
+
+sap ecc-odata,scpi(process integration),scp po(process orchestration),sap sd(sales&distribution),sap mm(material management),sap brim(business revenenue management)
+
+ecc product  push to pi-  tcode-transaction code to odata
+        
+odata to hybris integration using scpi(sap cloud platofrom integration)
+
+hybris also having odata to compress all the datas 
+
+ecc - odata - scpi - hybris db or odata hybris or modelservice.save using populator and converter
+it will be staged version.
+
+nightlybatch - product should be triggered using cron job at certain time.
+
+rest template or web client 
+json - it will convert into object 
+using rest template we can search any out of the box populator or converter already available 
+if yes we can reuse it for api call 
+
+in ecc side - 
+in hybris side - 
+
+to set the data or send the data to scpi we need to write rest api with the layers .
+transactional data with business process 
+
+we can write cronjob for the model
+override
+iterate list of product using uid based on user
+write rest template
+use callforobject("url")
+return new object of perform result
+
+
+every core has a business process
+we use converter and helper 
+
+if there is ecc we have order fullfillment will happen at ecc.
+when we have sap or non sap in place the reasons since we have odata 
+bcoz we have have non sap system(system) in place thats why we have scpi as a middleware database .
+speed is data analytic system.
+in sap there is routing.
+which checks wheather its coming from laptop or mobile
+speed or scalar for data analytics
+hybris-order placing system contains purchase order
+comes to sap which is sales order.
+
+since we have sap system fullfillment will happen in sap.
+if there is no sap system the product placing system will happen within hybris
+
+hybris oms is order fullfillment system.
+pick pack process dispatch all returns with refund is fullfillment process.
+sap database is sap hannah
+
+idoc is an xml file which is 
+depmas is b2b unit data.
+
+we can create child b2bunit
+6000 organization -cement
+7000- paint
+61 channel
+60 division
+
+dealer
+trader
+non-trader
+
+if order is failed we can have change request(cr)
+
+eyeoption ->search utcl->bgp product master replication->right side logs after attachment ->download 
+
+all xmls of root are matmas which is zidbgp
+sndorn tag- sender port for prod is 300
+rcp-receiver port
+integration flow is also called iflow
+sender is called left side the receiver is right side
+middle side will do enrichment or integration process
+
+
+xslt is a mapping which is available in environment extractor
+
+bgp product master replication -
+
+s4 hana ->payload logger -> environment extractor ->bgp data extractor->xml to csv convertor -> commerce azure hotfolder
+
+
+s4 - cloud integration - azure - hotfolder(csv converter)
+sfa order creation - call from mobile application api
+
+ctrl f5 and f6 
+defaultplaceorderstrategy.java where all the order get passed through cart for checkout
+ fullfillment process is based on business process
+ order splitting strategy
+ if the order gets splitted based on availability called consignment process
+ if we have listeners for particaular model we must have event
+ 
+ 
+ user management->create->s.userId,email,role->c.dev->disable 2 factor
+ 
+ data folder->hybris folder ->custom folder put inside hybris folder
+ new custom paste inside old custom folder place -_-

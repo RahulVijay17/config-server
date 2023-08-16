@@ -1,0 +1,36 @@
+workflow,business process,email process
+
+workflow -> will have a set of task executed in sequence
+assigned for employees basically which is managed by admin and which is assigned to each employee based on actually his role is
+
+eg: content page has to be displayed in a page which is page review 
+then they create some workflow task like page review and page approve
+these kind of task they create and assign the task to the particular employee
+
+workflow has workflowtemplatemodel : page approval
+will have List of workflowactiontemplatemodel (list of action sequence page review and page approval)
+
+manual action -> manually they will review  and they will accept and reject
+automated action -> automatedworkflowactiontemplatemodel -> we need to define a java class and make it as a springbean and that particular java class will be executed rather than some employee review it.
+
+and each workflowaction will have the decision that will be linked with workflowaction and workflowdecision
+then we will have workflowdecisiontemplate
+review 
+
+business process -> will have a set of task executed in sequentially 
+we can execute any kind of task based on which task is required in storefront
+
+business process almost everything automated class will be there for each action that will be executing automatically one by one there will be no user which basically assigned to perform the task like workflow
+
+so we have a set of task in business process which is action node
+
+action node 1 -> springbean -> bean id of java class
+for each action we will have a java class which will have some logic and each action node will have transition
+transition-> OK , NOK 
+
+
+
+action node 2 -> springbean -> bean id of java class
+transition-> OK , NOK 
+
+....

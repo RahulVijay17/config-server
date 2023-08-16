@@ -14,7 +14,7 @@ for subsequent occ calls.
 
 flow occ -> presentation jsp page and controllers -> facade -> services -> dao -> db
 if u want to get the details from db then we will call the db and send the data to presentation layer.
-and if u want to save in transaction we will have a from  and then convert that into model object and save it in db.
+and if u want to save in transaction we will have a form  and then convert that into model object and save it in db.
 
 if we dont want to use jsp page or wcms component but still want to use hybris but only UI we dont want to manage in hybris.
 this kind of architecture is called headless architecture means hybris is used without UI.

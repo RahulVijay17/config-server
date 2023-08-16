@@ -1,0 +1,36 @@
+forward flow -pass data from ui and store it in db
+backwordflow -get data from db and display it in ui
+
+we need to create new object which is dto
+because it gets the data from model and pass it on to the presentation layer.
+why we need to create dto when we have model
+bcoz customer model is asscoicated to db and it has table and when we have table many number of columns would be created in the table which are always not required on the presentation layer such as creation date,modified date
+
+so in order to reduce the bulk attributes to the ui we need to create a seperate object which has only light weight.
+
+model->is heavyweight object should not be passed to presentation layer
+we need to pass dto object to presentation layer(storefront).
+
+how to create dto in hybris
+*extension*-beans.xml
+facade :we need to create  a dto classes 
+
+to send dto to ui we have populators
+populators-it converts model object to dto object
+so this conversion is required it is required basically your presentation layer needs lightweight object rather than heavy object and that job is done by populators and it is done in facade layer.
+eg : customer model into customer data
+	 order model into order data
+that is why thre should be a conversion b/w model and object always and that is converted using populators
+
+convertors - take the list of populators and execute those populators and returns the final target object
+populators - java class which has a method populate which we have to override and pass the source and target 
+source is model and target is dto object
+
+converter is basically java class written by hybris which basically iterates all the  populate method associated to converter and provide you the end target object
+
+populators just to take source from model and target as dto and populates soruce to dto
+
+step 1 : identify attributes required in dto object and new attributes required in model class
+step 2 : create new attributes in -beans.xml file for dto and create new attributes in items.xml for model class related attributes
+step 3: make sure the values are copied from source to target in the flow and create populators
+step 4: every populator must be a spring bean

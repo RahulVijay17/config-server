@@ -1,0 +1,33 @@
+promotions
+
+in promotions basically in hybris it is designed on rule engine which is drools
+so drools is seperate framework which basically used for creating rules.
+
+what rule engine does is to define a conditon and action
+conditon + action is called promotions.
+so that conditon and action creation is provided by rule engine so that we can create a promotion
+
+for promotion management and executing the action and all hybris is using the promotion engine 
+so we can create a promotion using this promotion engine and that promotion engine will use the rule engine 
+
+if order(cart) total is >300 then give 10% discount  or >500 give free coupon
+here conditon -> order total > 300
+action -> give 10% discount
+
+so every promotion in hybris we create it go into cart lvl promotion or product lvl promotion or customer lvl promotion
+
+cart lvl promotion - we are going to give promotion based on the cart value
+promotion is based on cart total
+
+product lvl promotion - promotion is based on products/categories
+it means we buy 1 product we get another product as free which is pogo promotion  buy 1 get 1 
+
+customer lvl promotion
+target customer group
+
+hybris ootb has provided so many templates already so these promotion templates we can use and create any number of promotions based on the conditon and action.
+
+backoffice -> promotion search -> promotion templates
+
+order threshold - this template will be used by marketing team when the cart value reaches a certain limit and we give free coupon
+

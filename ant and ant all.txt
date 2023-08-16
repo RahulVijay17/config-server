@@ -1,0 +1,27 @@
+When we do ant clean all command from command prompt,it will do
+
+1) Check folder structure
+
+It first checks the folder structure of Hybris installed directory.
+
+It checks whether config,log,data,temp etc folders are available inside hybris folder.
+
+If this folder structure is not available then it creates the folder structure
+
+If this folder structure is already available then do nothing.
+
+2) If there is no build, It will create a build from scratch, if there is any build exist, It will delete and recreate it.
+
+Ant all
+
+1) It assumes folder structure is already exist
+
+2) If there is no build, it will create a build from scratch, if there is any build exist, it will modify it rather than recreating it.
+
+It’s advisable to use ant all more frequently for building the Hybris platform.
+
+Use ant clean all during the first time setup or if some changes are not reflecting even after doing ant all.
+
+Otherwise ant all should be fine for building hybris platform.
+
+Ideally ant clean all does everything what ant all does and it also performs some additional tasks.
