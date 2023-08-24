@@ -25,3 +25,13 @@ we have banner component,paragraph component,caraousal component
 there are so many component hybris has defind out of the box and we can also create our own component
 
 when we define a component we define it independently and the linkage how it happens is we link the component or assoicate the component to content slot. 
+
+contentslotfortemplate -this is a relation which used to link content slot name for page template
+reusing purpose .
+insert_update contentslotfortemplate;contentslot;pagetemplate;position
+cs1;123;
+
+contentslotforpage - thid is a relation which used to link content slot name for page 
+insert_update contentslotforpage;contentslot;page;position
+
+position-is contentslotname
