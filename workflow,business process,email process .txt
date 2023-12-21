@@ -29,9 +29,28 @@ for each action we will have a java class which will have some logic and each ac
 the end it has to return the Transition.
 transition-> OK , NOK  ->
 
-
-
 action node 2 -> springbean -> bean id of java class
 transition-> OK , NOK 
 
+business process - xml definition - this will have a set of actions eg:order-process.xml
+we need to create a java class which extends abstractsimpledecision<model> and overrirde executeAction and return is transition.
+
+if we want to create a new business process we need to create a new item type that extends businessprocessmodel and add additional attributes and we need to 
+give the fully qualified name in the xml in the process tag inside  processClass and we need to give name for our business process class. eg:order-process.xml
+
+whatever we define in the businessprocess xml we need to import it in the actual spring.xml file using the <import resource = "" tag
+
+start business process wherever required
+to start business process we have businessprocess service defined in hybris we use it to start our business process.
+
+in case of not ok where we can see the logs?
+we can see the logs in backoffice->system -> bus process inside we have process properties and inside it we can see process tasks logs
 ....
+
+email process
+
+3 standard actions
+
+1.generate email action
+2.send email action
+3.remove sent email action
