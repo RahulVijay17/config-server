@@ -25,8 +25,9 @@ business process almost everything automated class will be there for each action
 so we have a set of task in business process which is action node
 
 action node 1 -> springbean -> bean id of java class
-for each action we will have a java class which will have some logic and each action node will have transition
-transition-> OK , NOK 
+for each action we will have a java class which will have some logic and each action node will have transition and after executing the logic at
+the end it has to return the Transition.
+transition-> OK , NOK  ->
 
 
 
