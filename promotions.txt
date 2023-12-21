@@ -31,3 +31,11 @@ backoffice -> promotion search -> promotion templates
 
 order threshold - this template will be used by marketing team when the cart value reaches a certain limit and we give free coupon
 
+to see the templates go to backoffice->promotion template ->set of templates 
+to reuse a promotion template go to conditoni and action tab and click on create a promotion using this template and we need to give the name for our rule
+
+to check the our created promotion go to backoffice->promotion rules -> search {our rule name}
+
+how to publish our promotion?
+in rule properties we have to change the status from unpublished to publish in order to active in the storefront
+
