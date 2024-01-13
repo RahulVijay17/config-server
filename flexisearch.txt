@@ -42,6 +42,9 @@ select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as 
 to get all orders based on everything except completed
 select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code} !='COMPLETED'
 
+to get all products and catalog version which is online
+select {p.code},{cv.version} from {Product as p  join catalogVersion as cv on {p.catalogVersion}={cv.pk}} where {cv.version}='Online'
+
 flexible query using join
 
 1.one to one
