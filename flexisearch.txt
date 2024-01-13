@@ -34,7 +34,10 @@ to get all orders based on status
 select * from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED'
 
 to get all orders based on orderstatus creation time
-select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED' order by {o.creationtime} desc
+select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED' order by {o.creationtime} DESC
+
+to get all orders based on 2 statuses
+select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='COMPLETED' OR {os.code}='CANCELLED' order by {o.creationtime} ASC
 
 flexible query using join
 
