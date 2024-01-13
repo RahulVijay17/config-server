@@ -33,6 +33,9 @@ select * from {Order as o} where (to_char({o:creationTime},'YYYY-mm-dd hh24:mi:s
 to get all orders based on status
 select * from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED'
 
+to get all orders based on orderstatus creation time
+select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED' order by {o.creationtime} desc
+
 flexible query using join
 
 1.one to one
