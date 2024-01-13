@@ -24,6 +24,9 @@ flexible search in hybris can do it in 2 ways
 1.it converts the flexi search query into sql query.
 2.execute the sql query.[which is nothing but the deployment table name]
 
+to get the current language data from the table
+select {code},{name[en]} from {Product};
+
 flexible query using join
 
 1.one to one
