@@ -39,6 +39,9 @@ select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as 
 to get all orders based on 2 statuses
 select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='COMPLETED' OR {os.code}='CANCELLED' order by {o.creationtime} ASC
 
+to get all orders based on everything except completed
+select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code} !='COMPLETED'
+
 flexible query using join
 
 1.one to one
