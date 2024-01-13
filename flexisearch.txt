@@ -30,6 +30,9 @@ select {code},{name[en]} from {Product};
 to search the list of orders b/w 2 dates;
 select * from {Order as o} where (to_char({o:creationTime},'YYYY-mm-dd hh24:mi:ss') >= ('2010-12-28 23:59:59')) and (to_char({o:creationTime},'YYYY-mm-dd hh24:mi:ss') <= ('2020-01-17 10:00:00'))
 
+to get all orders based on status
+select * from {Order as o join OrderStatus as os on {o.status}={os.pk} } where {os.code}='CREATED'
+
 flexible query using join
 
 1.one to one
