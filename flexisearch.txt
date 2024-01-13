@@ -45,6 +45,9 @@ select {o.code},{os.code},{o.creationtime} from {Order as o join OrderStatus as 
 to get all products and catalog version which is online
 select {p.code},{cv.version} from {Product as p  join catalogVersion as cv on {p.catalogVersion}={cv.pk}} where {cv.version}='Online'
 
+to get products without varientproduct subtype
+select {code} from {Product!}
+
 flexible query using join
 
 1.one to one
